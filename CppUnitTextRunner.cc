@@ -51,7 +51,7 @@ uint64_t GetTimeStamp()
 std::string FormatTime( uint64_t t )
 {
   std::ostringstream o;
-  o << std::setw(4) << std::setfill(' ') << t/1000000 << ".";
+  o << std::setw(6) << std::setfill(' ') << t/1000000 << ".";
   o << std::setw(6) << std::setfill('0') << t%1000000;
   return o.str();
 }
