@@ -87,10 +87,13 @@ class ProgressPrinter: public CppUnit::TestListener
     virtual void addFailure( const CppUnit::TestFailure &failure )
     {
       pIsFailure = true;
+      CppUnit::SourceLine l = failure.sourceLine();
       PrintElapsed( pTestStart );
       pStream << " [FAILED]" << std::endl;
       pStream << "----------" << std::endl;
       pStream << failure.thrownException()->what() << std::endl;
+      pStream << "Where: " << l.fileName() << ":" << l.lineNumber();
+      pStream << std::endl;
       pStream << "----------" << std::endl;
     }
 
